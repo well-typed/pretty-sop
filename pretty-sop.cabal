@@ -1,7 +1,9 @@
 name:                pretty-sop
 version:             0.1.0.0
+synopsis:            A generic pretty-printer using generics-sop
+license:             BSD3
 license-file:        LICENSE
-author:              Edsko de Vries, Andres Löh
+author:              Edsko de Vries <edsko@well-typed.com>, Andres Löh <andres@well-typed.com>
 maintainer:          edsko@well-typed.com
 category:            Generics
 build-type:          Simple
@@ -34,7 +36,8 @@ library
                        KindSignatures
                        DataKinds
                        FunctionalDependencies
-                       AutoDeriveTypeable
+  if impl (ghc >= 7.8)
+    default-extensions:  AutoDeriveTypeable
   other-extensions:    OverloadedStrings
                        OverlappingInstances
                        PolyKinds
