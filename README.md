@@ -7,6 +7,6 @@ of a generic function defined in the SOP style.
 
 This is the development repository. For releases, look on [Hackage][2].
 
-[0]: https://hackage.haskell.org/pretty-show
+[0]: https://hackage.haskell.org/package/pretty-show
 [1]: https://github.com/well-typed/generics-sop
-[2]: https://hackage.haskell.org/pretty-sop
+[2]: https://hackage.haskell.org/package/pretty-sop
