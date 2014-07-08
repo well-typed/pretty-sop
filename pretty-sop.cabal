@@ -1,6 +1,16 @@
 name:                pretty-sop
 version:             0.1.0.0
 synopsis:            A generic pretty-printer using generics-sop
+description:
+  This library contains a generic implementation of the 'prettyVal'
+  function from the @<https://hackage.haskell.org/pretty-show pretty-show>@
+  package. Using the pretty printer, values can easily be rendered to
+  strings and HTML documents in a uniform way.
+  .
+  This library makes use of the
+  @<https://hackage.haskell.org/generics-sop generics-sop>@ package and
+  is an example of a generic function defined in the SOP style.
+  .
 license:             BSD3
 license-file:        LICENSE
 author:              Edsko de Vries <edsko@well-typed.com>, Andres Löh <andres@well-typed.com>
@@ -10,6 +20,9 @@ build-type:          Simple
 cabal-version:       >=1.10
 tested-with:         GHC == 7.6.3, GHC == 7.8.2
 
+source-repository head
+  type:                git
+  location:            https://github.com/well-typed/pretty-sop
 
 library
   exposed-modules:     Generics.SOP.PrettyVal
