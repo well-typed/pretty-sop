@@ -1,4 +1,4 @@
-This library contains a generic implementation of the 'prettyVal' function
+This library contains a generic implementation of the `prettyVal` function
 from the [pretty-show][0] package. Using the pretty printer, values can
 easily be rendered to strings and HTML documents in a uniform way.
 
