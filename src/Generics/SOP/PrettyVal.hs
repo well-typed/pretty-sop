@@ -30,13 +30,13 @@ import Generics.SOP
 gprettyVal :: forall a. (Generic a, HasDatatypeInfo a, All2 PrettyVal (Code a)) => a -> Value
 gprettyVal = gprettyVal' (datatypeInfo (Proxy :: Proxy a)) . from
 
-gprettyVal' :: (All2 PrettyVal xss, SingI xss) => DatatypeInfo xss -> SOP I xss -> Value
+gprettyVal' :: (All2 PrettyVal xss, All SListI xss) => DatatypeInfo xss -> SOP I xss -> Value
 gprettyVal' (ADT     _ _ cs) = gprettyVal'' cs
 gprettyVal' (Newtype _ _ c)  = gprettyVal'' (c :* Nil)
 
-gprettyVal'' :: (All2 PrettyVal xss, SingI xss) => NP ConstructorInfo xss -> SOP I xss -> Value
+gprettyVal'' :: (All2 PrettyVal xss, All SListI xss) => NP ConstructorInfo xss -> SOP I xss -> Value
 gprettyVal'' info (SOP sop) =
-  hcollapse $ hcliftA2' p prettyValFor info sop
+  hcollapse $ hcliftA2 allp prettyValFor info sop
 
 prettyValFor :: All PrettyVal xs => ConstructorInfo xs -> NP I xs -> K Value xs
 prettyValFor (Constructor n) = K . Con n . hcollapse . hcliftA p (K . prettyVal . unI)
@@ -52,3 +52,6 @@ prettyValFor (Record n fs)   = K . Rec n . hcollapse . hcliftA2 p aux fs
 
 p :: Proxy PrettyVal
 p = Proxy
+
+allp :: Proxy (All PrettyVal)
+allp = Proxy
