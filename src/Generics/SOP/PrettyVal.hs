@@ -44,7 +44,9 @@ prettyValFor (Infix n _ _)   = K . aux . hcliftA p (K . prettyVal . unI)
   where
     aux :: forall x y. NP (K Value) '[x, y] -> Value
     aux (K x :* K y :* Nil) = InfixCons x [(n, y)]
+#if __GLASGOW_HASKELL__ < 800
     aux _                   = error "inaccessible"
+#endif
 prettyValFor (Record n fs)   = K . Rec n . hcollapse . hcliftA2 p aux fs
   where
     aux :: forall a. PrettyVal a => FieldInfo a -> I a -> K (Name, Value) a
