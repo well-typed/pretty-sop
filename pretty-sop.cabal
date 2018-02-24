@@ -57,3 +57,9 @@ library
                        PolyKinds
                        UndecidableInstances
                        TemplateHaskell
+
+test-suite readme
+  type:           exitcode-stdio-1.0
+  main-is:        README.lhs
+  build-depends:  base, pretty-sop, generics-sop, pretty-show, markdown-unlit
+  ghc-options:    -pgmL markdown-unlit
