@@ -1,7 +1,7 @@
 ## pretty-sop
 
 [![Build Status](https://travis-ci.org/well-typed/pretty-sop.svg?branch=master)](https://travis-ci.org/well-typed/pretty-sop)
-[![Release](https://img.shields.io/github/release/well-typed/pretty-sop.svg)](https://github.com/well-typed/pretty-sop/releases)
+[![Hackage](https://img.shields.io/hackage/v/pretty-sop.svg)](https://hackage.haskell.org/package/pretty-sop)
 
 This library contains a generic implementation of the `prettyVal` function
 from the [pretty-show](https://hackage.haskell.org/package/pretty-show) package.
