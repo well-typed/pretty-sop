@@ -18,7 +18,7 @@ maintainer:          andres@well-typed.com
 category:            Generics
 build-type:          Simple
 cabal-version:       >=1.10
-tested-with:         GHC == 7.8.4, GHC == 7.10.3, GHC == 8.0.1, GHC == 8.0.2, GHC == 8.1.*
+tested-with:         GHC == 7.8.4, GHC == 7.10.3, GHC == 8.0.2, GHC == 8.2.2, GHC == 8.4.3
 
 source-repository head
   type:                git
@@ -59,7 +59,9 @@ library
                        TemplateHaskell
 
 test-suite readme
-  type:           exitcode-stdio-1.0
-  main-is:        README.lhs
-  build-depends:  base, pretty-sop, generics-sop, pretty-show, markdown-unlit
-  ghc-options:    -pgmL markdown-unlit
+  default-language:    Haskell2010
+  type:                exitcode-stdio-1.0
+  main-is:             README.lhs
+  ghc-options:         -pgmL markdown-unlit
+  build-depends:       base, pretty-sop, generics-sop, pretty-show
+  build-tool-depends:  markdown-unlit:markdown-unlit >=0.5.0 && <0.6
