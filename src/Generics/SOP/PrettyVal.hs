@@ -31,8 +31,7 @@ gprettyVal :: forall a. (Generic a, HasDatatypeInfo a, All2 PrettyVal (Code a)) 
 gprettyVal = gprettyVal' (datatypeInfo (Proxy :: Proxy a)) . from
 
 gprettyVal' :: (All2 PrettyVal xss, All SListI xss) => DatatypeInfo xss -> SOP I xss -> Value
-gprettyVal' (ADT     _ _ cs) = gprettyVal'' cs
-gprettyVal' (Newtype _ _ c)  = gprettyVal'' (c :* Nil)
+gprettyVal' d = gprettyVal'' (constructorInfo d)
 
 gprettyVal'' :: (All2 PrettyVal xss, All SListI xss) => NP ConstructorInfo xss -> SOP I xss -> Value
 gprettyVal'' info (SOP sop) =
